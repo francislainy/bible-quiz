@@ -1,7 +1,6 @@
 <p> subject list works!</p>
-
 <ul>
   <li *ngFor="let subject of subjects">
-    <a [routerLink]="['/subject', subject.id]">{{ subject.name }}</a>
+    <a [routerLink]="['/subjects', subject.id, 'inner-subjects']">{{ subject.name }}</a>
   </li>
 </ul>

@@ -1,0 +1,9 @@
+<p>Inner subject list works!</p>
+
+<ul>
+  <li *ngFor="let subject of filteredSubjects">
+    <a [routerLink]="['/subjects', subject.parentId, 'inner-subjects', subject.id]">
+      {{ subject.name }}
+    </a>
+  </li>
+</ul>

@@ -14,8 +14,8 @@ import {RouterLink} from '@angular/router';
 })
 export class SubjectListComponent {
   subjects: ISubject[] = [
-    {id: 1, name: 'Mathematics'},
-    {id: 2, name: 'English'},
-    {id: 3, name: 'Physics'},
+    {id: 1, name: 'Bible books'},
+    {id: 2, name: 'Bible Characters'},
+    {id: 3, name: 'JW organisation'},
   ];
 }
