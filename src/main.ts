@@ -1,6 +1,15 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import {bootstrapApplication} from '@angular/platform-browser';
+import {AppComponent} from './app/app.component';
+import {SubjectListComponent} from './app/components/subject-list/subject-list.component';
+import {SubjectComponent} from './app/components/subject/subject.component';
+import {provideRouter, Routes} from '@angular/router';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'subjects'},
+  {path: 'subjects', component: SubjectListComponent},
+  {path: 'subject/:id', component: SubjectComponent},
+];
+
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes)],
+}).catch((err) => console.error(err));
