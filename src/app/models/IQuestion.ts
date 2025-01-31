@@ -4,8 +4,8 @@ export interface IQuestion {
   answer: string;
 }
 
-export interface IQuestions {
-  parentId: number;
+export interface ISubjectQuestions {
   subjectId: number;
+  parentId: number;
   questions: IQuestion[];
 }

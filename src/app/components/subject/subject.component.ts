@@ -1,42 +1,72 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {QuestionsService} from '../../services/questions.service';
-import {IQuestions} from '../../models/IQuestion';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { QuestionsService } from '../../services/questions.service';
+import { IQuestion, ISubjectQuestions } from '../../models/IQuestion';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
+  imports: [
+    NgIf
+  ],
   styleUrls: ['./subject.component.css']
 })
 export class SubjectComponent implements OnInit {
   parentId!: number;
   subjectId!: number;
 
-  allQuestions: IQuestions[] = [];
-  filteredQuestions: IQuestions[] = [];
+  questions: IQuestion[] = [];
+  currentQuestionIndex = 0;
+  showAnswer = false;
+  score = 0;
 
   constructor(
     private route: ActivatedRoute,
     private questionService: QuestionsService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-    // Retrieve route parameters
     this.parentId = +this.route.snapshot.paramMap.get('parent-id')!;
     this.subjectId = +this.route.snapshot.paramMap.get('inner-subject-id')!;
 
     this.questionService.getQuestions().subscribe({
-      next: (data) => {
-        console.log('Fetched questions:', data);
-        this.allQuestions = data;
-
-        // Filter questions based on parentId and subjectId
-        this.filteredQuestions = this.allQuestions.filter(
-          (question) => question.parentId === this.parentId && question.subjectId === this.subjectId
+      next: (data: ISubjectQuestions[]) => {
+        const subjectQuestions = data.find(
+          sq => sq.parentId === this.parentId && sq.subjectId === this.subjectId
         );
+
+        this.questions = subjectQuestions ? subjectQuestions.questions : [];
       },
       error: (err) => console.error('Error fetching questions:', err)
     });
+  }
+
+  getCurrentQuestion(): IQuestion | null {
+    return this.questions[this.currentQuestionIndex] || null;
+  }
+
+  revealAnswer() {
+    this.showAnswer = true;
+  }
+
+  markAsCorrect() {
+    this.score++;
+    this.showAnswer = false;
+    this.moveToNextQuestion();
+  }
+
+  moveToNextQuestion() {
+    if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.currentQuestionIndex++;
+      this.showAnswer = false;
+    }
+  }
+
+  moveToPreviousQuestion() {
+    if (this.currentQuestionIndex > 0) {
+      this.currentQuestionIndex--;
+      this.showAnswer = false;
+    }
   }
 }
