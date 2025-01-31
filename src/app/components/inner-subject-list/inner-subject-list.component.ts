@@ -26,7 +26,7 @@ export class InnerSubjectListComponent implements OnInit {
         this.allSubjects = data;
         // Get the parentId from the route
         this.route.paramMap.subscribe((params) => {
-          const parentId = Number(params.get('subjectId'));
+          const parentId = Number(params.get('parent-id'));
           this.filteredSubjects = this.allSubjects.filter(
             (subject) => subject.parentId === parentId
           );
