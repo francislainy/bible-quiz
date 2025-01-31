@@ -1,0 +1,23 @@
+[
+  {
+    "subjectId": 1,
+    "questions": [
+      { "id": 1, "text": "What is the first book of the Bible?", "answer": "Genesis" },
+      { "id": 2, "text": "What is the last book of the Bible?", "answer": "Revelation" }
+    ]
+  },
+  {
+    "subjectId": 2,
+    "questions": [
+      { "id": 1, "text": "Who built the ark?", "answer": "Noah" },
+      { "id": 2, "text": "Who was the first king of Israel?", "answer": "Saul" }
+    ]
+  },
+  {
+    "subjectId": 3,
+    "questions": [
+      { "id": 1, "text": "What is the name of the organization?", "answer": "Jehovah's Witnesses" },
+      { "id": 2, "text": "Who is the current president?", "answer": "N/A" }
+    ]
+  }
+]
