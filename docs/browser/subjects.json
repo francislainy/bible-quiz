@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Bible books",
+    "parentId": null,
+    "children": [
+      {
+        "id": 4,
+        "name": "Genesis",
+        "parentId": 1
+      },
+      {
+        "id": 5,
+        "name": "Exodus",
+        "parentId": 1
+      },
+      {
+        "id": 6,
+        "name": "Numbers",
+        "parentId": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Bible Characters",
+    "parentId": null,
+    "children": [
+      {
+        "id": 7,
+        "name": "Joseph",
+        "parentId": 2
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "JW organisation",
+    "parentId": null,
+    "children": []
+  }
+]
