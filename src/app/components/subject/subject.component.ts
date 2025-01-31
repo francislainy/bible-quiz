@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { QuestionsService } from '../../services/questions.service';
 import { IQuestion, ISubjectQuestions } from '../../models/IQuestion';
 import {NgIf} from '@angular/common';
@@ -8,7 +8,8 @@ import {NgIf} from '@angular/common';
   selector: 'app-subject',
   templateUrl: './subject.component.html',
   imports: [
-    NgIf
+    NgIf,
+    RouterLink
   ],
   styleUrls: ['./subject.component.css']
 })
