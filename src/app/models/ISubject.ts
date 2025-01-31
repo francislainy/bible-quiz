@@ -1,5 +1,6 @@
 export interface ISubject {
   id: number;
-  parentId?: number,
+  parentId?: number;
   name: string;
+  children?: ISubject[];
 }
