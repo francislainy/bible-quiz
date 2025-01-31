@@ -14,7 +14,11 @@
         <button (click)="revealAnswer()" class="bg-amber-700 text-amber-50 px-4 py-2 rounded hover:bg-amber-800 transition-colors shadow-sm">
           Reveal Answer
         </button>
-        <button (click)="markAsCorrect()" class="bg-amber-700 text-amber-50 px-4 py-2 rounded hover:bg-amber-800 transition-colors shadow-sm">
+        <button
+          (click)="markAsCorrect()"
+          [disabled]="getCurrentQuestion()?.markedAsCorrect"
+          [ngClass]="{'disabled-button': getCurrentQuestion()?.markedAsCorrect}"
+          class="bg-amber-700 text-amber-50 px-4 py-2 rounded hover:bg-amber-800 transition-colors shadow-sm">
           Mark as Correct
         </button>
       </div>

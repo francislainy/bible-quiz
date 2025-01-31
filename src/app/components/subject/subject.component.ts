@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, RouterLink} from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { QuestionsService } from '../../services/questions.service';
 import { IQuestion, ISubjectQuestions } from '../../models/IQuestion';
-import {NgIf} from '@angular/common';
+import {NgClass, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
   imports: [
     NgIf,
-    RouterLink
+    RouterLink,
+    NgClass
   ],
   styleUrls: ['./subject.component.css']
 })
@@ -52,9 +53,11 @@ export class SubjectComponent implements OnInit {
   }
 
   markAsCorrect() {
-    this.score++;
-    this.showAnswer = false;
-    this.moveToNextQuestion();
+    const currentQuestion = this.getCurrentQuestion();
+    if (currentQuestion && !currentQuestion.markedAsCorrect) {
+      this.score++;
+      currentQuestion.markedAsCorrect = true;
+    }
   }
 
   moveToNextQuestion() {
