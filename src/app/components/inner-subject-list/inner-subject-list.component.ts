@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ISubject } from '../../models/ISubject';
-import { NgForOf } from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import { SubjectsService } from '../../services/subjects.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { SubjectsService } from '../../services/subjects.service';
   templateUrl: './inner-subject-list.component.html',
   imports: [
     RouterLink,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   styleUrls: ['./inner-subject-list.component.css']
 })
