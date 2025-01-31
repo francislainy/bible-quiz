@@ -1,5 +1,4 @@
-import {DOCUMENT} from '@angular/common';
-import {Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ISubject} from '../models/ISubject';
@@ -8,9 +7,9 @@ import {ISubject} from '../models/ISubject';
   providedIn: 'root'
 })
 export class SubjectsService {
-  private subjectsUrl = 'bible-quiz/subjects.json';
+  private subjectsUrl = '/subjects.json';
 
-  constructor(private http: HttpClient, @Inject(DOCUMENT) private document: Document) {
+  constructor(private http: HttpClient) {
   }
 
   getSubjects(): Observable<ISubject[]> {
