@@ -1,9 +1,11 @@
-<p>Inner subject list works!</p>
-
-<ul>
-  <li *ngFor="let subject of filteredSubjects">
-    <a [routerLink]="['/subjects', subject.parentId, 'inner-subjects', subject.id]">
-      {{ subject.name }}
-    </a>
-  </li>
-</ul>
+<div class="min-h-screen flex flex-col items-center justify-center p-4 bg-amber-50">
+  <h1 class="text-3xl font-bold mb-6 text-amber-900">Select a Topic</h1>
+  <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full max-w-4xl">
+    <li *ngFor="let subject of filteredSubjects">
+      <a [routerLink]="['/subjects', subject.parentId, 'inner-subjects', subject.id]"
+         class="block bg-amber-200 text-amber-900 px-4 py-2 rounded-lg text-center font-medium hover:bg-amber-300 transition-colors shadow-sm">
+        {{ subject.name }}
+      </a>
+    </li>
+  </ul>
+</div>
