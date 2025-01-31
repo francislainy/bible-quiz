@@ -14,14 +14,21 @@ import {SubjectsService} from '../../services/subjects.service';
   styleUrl: './subject-list.component.css'
 })
 export class SubjectListComponent implements OnInit {
-  subjects: ISubject[] = [];
+  allSubjects: ISubject[] = [];
+  filteredSubjects: ISubject[] = [];
+
   constructor(private subjectService: SubjectsService) {}
 
   ngOnInit() {
     this.subjectService.getSubjects().subscribe({
       next: (data) => {
         console.log('Fetched subjects:', data);
-        this.subjects = data;
+        this.allSubjects = data;
+
+        // Filter out the top-level subjects
+        this.filteredSubjects = this.allSubjects.filter(
+          (subject) => subject.parentId === null
+        );
       },
       error: (err) => console.error('Error fetching subjects:', err)
     });
