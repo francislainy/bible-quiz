@@ -49,7 +49,7 @@ export class SubjectComponent implements OnInit {
   }
 
   revealAnswer() {
-    this.showAnswer = true;
+    this.showAnswer = !this.showAnswer;
   }
 
   markAsCorrect() {
