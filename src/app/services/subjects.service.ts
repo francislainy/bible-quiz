@@ -16,3 +16,7 @@ export class SubjectsService {
     return this.http.get<ISubject[]>(this.subjectsUrl);
   }
 }
+
+
+// ng build --output-path docs --base-href /bible-quiz/ && mv docs/browser/* docs/ && rmdir docs/browser
+
