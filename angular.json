@@ -5,16 +5,20 @@
   "projects": {
     "bible-quiz": {
       "projectType": "application",
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "docs",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -30,20 +34,6 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -55,17 +45,13 @@
                   "maximumWarning": "4kB",
                   "maximumError": "8kB"
                 }
-              ]
+              ],
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
-              "outputHashing": "none",
-              "sourceMap": true,
-              "namedChunks": true,
-              "aot": false,
               "extractLicenses": false,
-              "vendorChunk": true,
-              "buildOptimizer": false
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -74,12 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "outputPath": "docs",
-              "browserTarget": "bible-quiz:build:production",
-              "baseHref": "/bible-quiz/"
+              "buildTarget": "bible-quiz:build:production"
             },
             "development": {
-              "browserTarget": "bible-quiz:build:development"
+              "buildTarget": "bible-quiz:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +74,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
