@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ISubject} from '../models/ISubject';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubjectsService {
-  private subjectsUrl = '/subjects.json';
+  private subjectsUrl = environment.apiUrl + 'subjects.json';
 
   constructor(private http: HttpClient) {
   }
