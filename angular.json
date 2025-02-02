@@ -74,7 +74,9 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bible-quiz:build:production"
+              "outputPath": "docs",
+              "browserTarget": "bible-quiz:build:production",
+              "baseHref": "/bible-quiz/"
             },
             "development": {
               "browserTarget": "bible-quiz:build:development"
